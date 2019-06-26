@@ -13,7 +13,7 @@ const GEOCODE_KEY = 'AIzaSyB2KoBdSIJUAT9zjjT5OOrRAIKodlyxLqk'
 const initSearch = _ => {
   console.log('hello!!');
   bindSearchEvents();
-}
+};
 
 const bindSearchEvents = () => {
   $searchForm.addEventListener('submit', e => {
@@ -26,16 +26,16 @@ const bindSearchEvents = () => {
     // get lat and long, function goes here
     getLatLng(citySearched);
     render();
-  })
+  });
 }
 
 // create a function that gets the long and lat values
 // es6 put async before paramater
 const getLatLng = async (query) => {
-  const reqLink = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${GEOCODE_KEY}`
+  const reqLink = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${GEOCODE_KEY}`;
 
   // put away before function name
-  const fetchData = await fetch(reqLink)
+  const fetchData = await fetch(reqLink);
   const parsed = await fetchData.json();
   const latLng = {
     lat: parsed.results[0].geometry.location.lat,
@@ -47,7 +47,7 @@ const getLatLng = async (query) => {
 
 const render = _ => {
   $searchCity.innerHTML = citySearched;
-}
+};
 
 export {
   initSearch
